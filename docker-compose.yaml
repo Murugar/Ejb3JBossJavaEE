@@ -1,0 +1,21 @@
+version: "2.1"
+
+services:
+
+  ejb-3-starter:
+    restart: unless-stopped
+    build: .
+    volumes: ["ejb-3-starter-data:/home"]
+    ports:
+      - "5005:5005"
+      - "8080:8080"
+      - "8081:8081"
+      - "9990:9990"
+    networks: [backing-services]
+
+volumes:
+  ejb-3-starter-data: {}
+
+networks:
+  backing-services:
+    driver: bridge
